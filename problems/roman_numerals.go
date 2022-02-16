@@ -1,22 +1,6 @@
-package main
+package problems
 
-import "fmt"
-
-func main() {
-	m := make(map[string]int)
-	m["I"] = 1
-	m["V"] = 5
-	m["X"] = 10
-	m["L"] = 50
-	m["C"] = 100
-	m["D"] = 500
-	m["M"] = 1000
-
-	input := "LXIV"
-	fmt.Println(efficentAlgorithmRecursive(m, input, "M", 0))
-}
-
-func myAlgorithm(m map[string]int, input string) int {
+func MyAlgorithm(m map[string]int, input string) int {
 	value := 0
 	calculate_last := true
 	for i := 0; i < len(input); i++ {
@@ -42,7 +26,7 @@ func myAlgorithm(m map[string]int, input string) int {
 	return value
 }
 
-func efficentAlgorithm(m map[string]int, input string) int {
+func EfficentAlgorithm(m map[string]int, input string) int {
 	value := 0
 	for i := 0; i < len(input); i++ {
 		curr := string(input[i])
@@ -58,7 +42,7 @@ func efficentAlgorithm(m map[string]int, input string) int {
 	return value
 }
 
-func efficentAlgorithmRecursive(m map[string]int, input string, last string, acc int) int {
+func EfficentAlgorithmRecursive(m map[string]int, input string, last string, acc int) int {
 	curr := string(input[0])
 	if m[last] < m[curr] {
 		acc -= 2 * m[last]
@@ -66,6 +50,6 @@ func efficentAlgorithmRecursive(m map[string]int, input string, last string, acc
 	if len(input) == 1 {
 		return acc + m[input]
 	}
-	substring := input[1:len(input)]
-	return efficentAlgorithmRecursive(m, substring, curr, acc+m[curr])
+	substring := input[1:]
+	return EfficentAlgorithmRecursive(m, substring, curr, acc+m[curr])
 }

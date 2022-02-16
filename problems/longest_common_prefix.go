@@ -1,12 +1,6 @@
-package main
+package problems
 
-import "fmt"
-
-func main() {
-	fmt.Println(longestCommonPrefix(([]string{"apple", "app", "appium"})))
-}
-
-func longestCommonPrefix(strs []string) string {
+func LongestCommonPrefix(strs []string) string {
 	shortest_string := shortestString(strs)
 	longest_substring := ""
 
